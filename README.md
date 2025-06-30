@@ -1,32 +1,36 @@
-# _Sample project_
+# ESP32 Custom SSID Setup Portal
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+This project creates a **captive portal-like interface** on the ESP32 using the **ESP-IDF framework** that allows you to **customize the Wi-Fi Access Point (AP) SSID** through a web browser. It stores the SSID using NVS (non-volatile storage), allowing it to persist across reboots.
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+---
 
+## 📌 Features
 
+- ✅ ESP32 Access Point (AP) mode with configurable SSID  
+- ✅ Web-based form to set a new SSID  
+- ✅ Persistent SSID storage using NVS  
+- ✅ Option to reset NVS data from the web interface  
+- ✅ Pure ESP-IDF (no Arduino)
 
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
+---
 
-## Example folder contents
+## 🧠 How It Works
 
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
+1. ESP32 boots and reads the saved SSID from NVS.
+2. Starts an AP with the saved SSID (or default `ESP32-Setup`).
+3. Hosts a web server with:
+   - `/` : Home page with SSID input form
+   - `/save` : Endpoint to save new SSID and restart
+   - `/reset` : Endpoint to erase NVS and restart
+4. The user connects to the AP and sets a new SSID via the form.
+5. New SSID is stored in NVS and used from the next boot.
 
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
+---
 
-Below is short explanation of remaining files in the project folder.
+## 🧰 Requirements
 
-```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+- ESP32 Development Board  
+- ESP-IDF (v4.0 or newer recommended)  
+- USB cable and terminal/serial monitor
+
+---
