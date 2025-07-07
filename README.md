@@ -25,6 +25,9 @@ This project creates a **captive portal-like interface** on the ESP32 using the 
 4. The user connects to the AP and sets a new SSID via the form.
 5. New SSID is stored in NVS and used from the next boot.
 
+![Custom_SSID_1 drawio](https://github.com/user-attachments/assets/c76366aa-576c-4a6e-9ab7-0311730d9adb)
+
+
 ---
 
 ## 🧰 Requirements
